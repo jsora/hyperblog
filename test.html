@@ -1,0 +1,104 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+	<title> 
+		How to convert an HTML element 
+		or document into image 
+	</title> 
+	
+	<script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> 
+	</script> 
+	
+	<script src= 
+"https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"> 
+	</script> 
+</head> 
+
+<body> 
+	<center> 
+
+	<h2 style="color:purple"> 
+		Convert div to image 
+	</h2> 
+	
+	<div id="html-content-holder" style="background-color: #F0F0F1; 
+				width: 500px;padding-left: 25px; 
+				padding-top: 10px;"> 
+		
+		<table class="egt">
+
+  <tr>
+
+    <td>NUMERO DE MEDICION</td>
+
+    <td>LECTURA O SESION #</td>
+
+    <td>HORA</td>
+
+  </tr>
+
+  <tr>
+
+    <td>Info 1</td>
+
+    <td>Info 2</td>
+
+    <td>Info 3</td>
+
+  </tr>
+
+</table>
+	</div> 
+
+	<input id="btn-Preview-Image" type="button"
+				value="Preview" /> 
+		
+	<a id="btn-Convert-Html2Image" href="#"> 
+		Download 
+	</a> 
+
+	<br/> 
+	
+	<h3>Preview :</h3> 
+	
+	<div id="previewImage"></div> 
+	
+	<script> 
+		$(document).ready(function() { 
+		
+			// Global variable 
+			var element = $("#html-content-holder"); 
+		
+			// Global variable 
+			var getCanvas; 
+
+			$("#btn-Preview-Image").on('click', function() { 
+				html2canvas(element, { 
+					onrendered: function(canvas) { 
+						$("#previewImage").append(canvas); 
+						getCanvas = canvas; 
+					} 
+				}); 
+			}); 
+
+			$("#btn-Convert-Html2Image").on('click', function() { 
+				var imgageData = 
+					getCanvas.toDataURL("image/png"); 
+			
+				// Now browser starts downloading 
+				// it instead of just showing it 
+				var newData = imgageData.replace( 
+				/^data:image\/png/, "data:application/octet-stream"); 
+			
+				$("#btn-Convert-Html2Image").attr( 
+				"download", "GeeksForGeeks.png").attr( 
+				"href", newData); 
+			}); 
+		}); 
+	</script> 
+	</center> 
+</body> 
+
+</html>	
