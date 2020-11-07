@@ -1,6 +1,6 @@
 body
 {
-    color: orange;
+    color: black;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
@@ -38,4 +38,12 @@ body
 #container h
 {
     font-size: 20px;
+}
+
+#footer
+{
+   background: #777; 
+   color: white;
+   text-align: center;
+   padding: 0.5em;
 }
